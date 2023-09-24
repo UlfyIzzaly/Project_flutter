@@ -1,0 +1,114 @@
+ import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, String>> data = [
+      {
+        "name": "irjen pol Drs. Tomsi Tohir, M.Si",
+        "imageUrl":
+            "https://pict.sindonews.net/dyn/850/pena/news/2022/06/29/15/812569/profil-tomsi-tohir-balaw-jenderal-bintang-2-yang-ditunjuk-jadi-irjen-kemendagri-lrt.jpg",
+        "Jabatan": "Inspektur Jendral"
+      },
+      {
+        "name": "Dr. Muhamad Nur, ME",
+        "imageUrl":
+            "https://bpsdm.kemendagri.go.id/Assets/Uploads/drive/data/Diklat%20Audit%20Kinerja%20pada%20Senin%20(562023/WhatsApp%20Image%202023-06-07%20at%2008.46.59.jpg",
+        "Jabatan": "Sekrertaris Jendral"
+      },
+      {
+        "name": "Bachtiar Sinaga",
+        "imageUrl":
+            "https://bidiknasional.com/wp-content/uploads/2018/07/Rakorwasda6.jpg",
+        "Jabatan": "Inspektur 1"
+      },
+      {
+        "name": "Dr.A. Damenta",
+        "imageUrl":
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJoaRM6OW14a1q82G0Lfyre1Qrv0T17M5KDIW-V87ZeYnZXsnp3aqKmw7JlW6uWVeA78NZmYubNdnf5KKltAe4gUwJhT_NwUR4fqi4SDSGarU9OBThqrqyWj5kXs-R77zR_ftnNQ9bhsUTcZLNSJ8rdAxZAJENFJ7XceQpYZHiNyxWpHzvcfgUdKYw/s3410/IMG_20230418_055519.jpg",
+        "Jabatan": "inspektur 2 "
+      },
+      {
+        "name": "Dr. Elfin ",
+        "imageUrl":
+            "https://www.sumut24.co/wp-content/uploads/2022/11/IMG_20221111_231515.jpg",
+        "Jabatan": "Inspektur 3"
+      },
+      {
+        "name": "Drs. Arsam Latif",
+        "imageUrl":
+            "https://beritakotamakassar.fajar.co.id/wp-content/uploads/2022/08/ARSAN-LATIF.jpg",
+        "Jabatan": "Inspektur 4"
+      },
+      {
+        "name": "Dr. Drs. Teguh Narutomo",
+        "imageUrl":
+            "https://www.viralpublik.com/sites/default/files/styles/normal_size/public/article/2023/03/WhatsApp%20Image%202023-03-20%20at%2017.45.49.jpeg?itok=sL47k0XP",
+        "Jabatan": "Inspektur Khusus"
+      },
+    ];
+    return MaterialApp(
+      title: 'Praktikum',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Color(0xffe5e5e5),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Project Uji Coba'),
+          backgroundColor: Colors.blueAccent,
+          leading: IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () {}, // add onPressed callback
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        body: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            final item = data[index];
+            return Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+              ),
+              child: ListTile(
+                leading: ClipOval(
+                  child: Image.network(
+                    item["imageUrl"] ?? "",
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+                title: Text(
+                  item["name"] ?? "",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                subtitle: Text(
+                  item["Jabatan"] ?? "",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
